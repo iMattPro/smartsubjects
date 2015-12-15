@@ -1,0 +1,9 @@
+services:
+    vse.smartsubjects.listener:
+        class: vse\smartsubjects\event\main_listener
+        arguments:
+            - '@dbal.conn'
+            - '%tables.forums%'
+            - '%tables.posts%'
+        tags:
+            - { name: event.listener }

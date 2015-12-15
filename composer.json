@@ -1,0 +1,27 @@
+{
+    "name": "vse/smartsubjects",
+    "type": "phpbb-extension",
+    "description": "When editing the subject of the first post in a topic, all subsequent posts with matching (Re:) subjects will also be updated to the new subject.",
+    "homepage": "",
+    "version": "1.0.0-b1",
+    "time": "2015-12-14",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "VSE",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpbb/epv": "dev-master"
+    },
+    "extra": {
+        "display-name": "Smart Subjects",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.4"
+        }
+    }
+}
