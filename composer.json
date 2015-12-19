@@ -21,7 +21,7 @@
     "extra": {
         "display-name": "Smart Subjects",
         "soft-require": {
-            "phpbb/phpbb": ">=3.1.4"
+            "phpbb/phpbb": ">=3.1.0"
         }
     }
 }
