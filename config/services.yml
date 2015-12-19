@@ -3,6 +3,8 @@ services:
         class: vse\smartsubjects\event\main_listener
         arguments:
             - '@dbal.conn'
+            - '@request'
+            - '@user'
             - '%tables.forums%'
             - '%tables.posts%'
         tags:
