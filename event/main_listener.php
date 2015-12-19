@@ -147,6 +147,6 @@ class main_listener implements EventSubscriberInterface
 	 */
 	protected function forum_auth($forum_id)
 	{
-		return $this->auth->acl_get('f_smart_subjects', $forum_id);
+		return (bool) $this->auth->acl_get('f_smart_subjects', $forum_id);
 	}
 }
