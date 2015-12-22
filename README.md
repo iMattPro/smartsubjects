@@ -2,6 +2,8 @@
 
 With this extension, editing the subject of the first post in a topic will update all subsequent posts with matching (Re:) subjects to the new subject.
 
+[![Build Status](https://travis-ci.org/VSEphpbb/smartsubjects.png)](https://travis-ci.org/VSEphpbb/smartsubjects)
+
 ## Requirements
 * phpBB 3.1.0 or higher
 * PHP 5.3.3 or higher
