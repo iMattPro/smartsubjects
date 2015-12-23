@@ -188,7 +188,8 @@ class update_subjects_test extends listener_base
 		$result = $this->db->sql_query('SELECT post_id, post_subject
 			FROM phpbb_posts
 			WHERE topic_id = ' . (int) $data['topic_id'] . '
-			AND post_id != ' . (int) $data['post_id']);
+			AND post_id != ' . (int) $data['post_id'] . '
+			ORDER BY post_id');
 		$this->assertEquals($expected, $this->db->sql_fetchrowset($result));
 		$this->db->sql_freeresult($result);
 	}
