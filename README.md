@@ -6,7 +6,7 @@ With this extension, editing the subject of the first post in a topic will updat
 
 ## Features
 * Renaming the first post's subject will update all __matching__ replies to the new title
-* Board administrators have the option when editing a first post to force __all__ reply subjects to be updated to match the original post's subject
+* Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject
 * Forum based permissions allow you to control which forums and users can use Smart Subjects
 
 ## Requirements

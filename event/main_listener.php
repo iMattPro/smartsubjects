@@ -107,7 +107,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public function update_subjects($event)
 	{
-		// Only proceed if editing the first post in a topic
+		// Only proceed if editing the first post in a topic and smart subjects is allowed
 		if ($event['mode'] != 'edit' || $event['data']['topic_first_post_id'] != $event['post_id'] || !$this->forum_auth($event['forum_id']))
 		{
 			return;
