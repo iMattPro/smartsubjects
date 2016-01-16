@@ -95,7 +95,7 @@ class main_listener implements EventSubscriberInterface
 		$this->user->add_lang_ext('vse/smartsubjects', 'smartsubjects');
 
 		$page_data = $event['page_data'];
-		$page_data['S_SMART_SUBJECTS'] = $this->forum_auth($event['forum_id']);
+		$page_data['S_SMART_SUBJECTS_MOD'] = $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']);
 		$event['page_data'] = $page_data;
 	}
 
