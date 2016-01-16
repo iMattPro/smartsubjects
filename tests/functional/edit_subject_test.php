@@ -10,6 +10,8 @@
 
 namespace vse\smartsubjects\tests\functional;
 
+require_once dirname(__FILE__) . '/../../../../../includes/functions.php';
+
 /**
  * @group functional
  */
