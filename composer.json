@@ -3,7 +3,7 @@
     "type": "phpbb-extension",
     "description": "When editing the subject of the first post in a topic, all subsequent posts with matching (Re:) subjects will also be updated to the new subject.",
     "homepage": "https://github.com/VSEphpbb/smartsubjects",
-    "version": "1.0.0-b2",
+    "version": "1.0.0-b3",
 	"keywords": ["phpbb", "extension", "subject", "edit", "smart"],
     "license": "GPL-2.0",
     "authors": [
