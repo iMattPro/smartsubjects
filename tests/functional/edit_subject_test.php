@@ -10,7 +10,7 @@
 
 namespace vse\smartsubjects\tests\functional;
 
-require_once dirname(__FILE__) . '/../../../../../includes/functions.php';
+require_once __DIR__ . '/../../../../../includes/functions.php';
 
 /**
  * @group functional
@@ -87,7 +87,7 @@ class edit_subject_test extends \phpbb_functional_test_case
 	 * @param string $expected Lang var of expected message after posting
 	 * @return array|null post_id, topic_id if message is empty
 	 */
-	protected function edit_post($forum_id, $post_id, $subject, $message, $additional_form_data = array(), $expected = '')
+	protected function edit_post($forum_id, $post_id, $subject, $message, array $additional_form_data = array(), $expected = '')
 	{
 		$posting_url = "posting.php?mode=edit&f={$forum_id}&p={$post_id}&sid={$this->sid}";
 
@@ -99,5 +99,4 @@ class edit_subject_test extends \phpbb_functional_test_case
 
 		return self::submit_post($posting_url, 'EDIT_POST', $form_data, $expected);
 	}
-
 }

@@ -74,7 +74,7 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * Add administrative permissions to manage forums
 	 *
-	 * @param object $event The event object
+	 * @param \phpbb\event\data $event The event object
 	 * @return null
 	 */
 	public function add_permission($event)
@@ -87,7 +87,7 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * Setup Smart Subjects
 	 *
-	 * @param object $event The event object
+	 * @param \phpbb\event\data $event The event object
 	 * @return null
 	 */
 	public function setup($event)
@@ -102,13 +102,13 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * Update the post subjects in a topic
 	 *
-	 * @param object $event The event object
+	 * @param \phpbb\event\data $event The event object
 	 * @return null
 	 */
 	public function update_subjects($event)
 	{
 		// Only proceed if editing the first post in a topic and smart subjects is allowed
-		if ($event['mode'] != 'edit' || $event['data']['topic_first_post_id'] != $event['post_id'] || !$this->forum_auth($event['forum_id']))
+		if ($event['mode'] !== 'edit' || $event['data']['topic_first_post_id'] != $event['post_id'] || !$this->forum_auth($event['forum_id']))
 		{
 			return;
 		}
@@ -116,7 +116,7 @@ class main_listener implements EventSubscriberInterface
 		// Overwrite will update all reply subjects (including non-matching)
 		$overwrite = $this->request->is_set_post('overwrite_subjects');
 
-		if ($event['update_subject'] || $overwrite)
+		if ($overwrite || $event['update_subject'])
 		{
 			// Re: is actually hardcoded within phpBB ¯\_(ツ)_/¯
 			$old_subject = 'Re: ' . $event['data']['topic_title'];
