@@ -75,7 +75,7 @@ class main_listener implements EventSubscriberInterface
 	 * Add administrative permissions to manage forums
 	 *
 	 * @param \phpbb\event\data $event The event object
-	 * @return null
+	 * @return void
 	 */
 	public function add_permission($event)
 	{
@@ -88,7 +88,7 @@ class main_listener implements EventSubscriberInterface
 	 * Setup Smart Subjects
 	 *
 	 * @param \phpbb\event\data $event The event object
-	 * @return null
+	 * @return void
 	 */
 	public function setup($event)
 	{
@@ -103,7 +103,7 @@ class main_listener implements EventSubscriberInterface
 	 * Update the post subjects in a topic
 	 *
 	 * @param \phpbb\event\data $event The event object
-	 * @return null
+	 * @return void
 	 */
 	public function update_subjects($event)
 	{
