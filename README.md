@@ -9,9 +9,9 @@ With this extension, editing the subject of the first post in a topic will updat
 * Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject
 * Forum based permissions allow you to control which forums and users can use Smart Subjects
 
-## Requirements
-* phpBB 3.1.0 or higher
-* PHP 5.3.3 or higher
+## Minimum Requirements
+* phpBB 3.1.0 or phpBB 3.2.0
+* PHP 5.3.3
 
 ## Install
 1. Download and unzip the [latest release](https://github.com/VSEphpbb/smartsubjects/releases) and copy it to the `ext` directory of your phpBB board.
