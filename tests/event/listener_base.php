@@ -45,13 +45,17 @@ class listener_base extends \phpbb_database_test_case
 		parent::setUp();
 
 		// Mock extension manager for the user class
-		global $phpbb_extension_manager, $phpbb_root_path;
+		global $phpbb_extension_manager, $phpbb_root_path, $phpEx;
 		$phpbb_extension_manager = new \phpbb_mock_extension_manager($phpbb_root_path);
 
 		$this->db = $this->new_dbal();
 		$this->auth = $this->getMock('\phpbb\auth\auth');
 		$this->request = $this->getMock('\phpbb\request\request');
-		$this->user = new \phpbb\user('\phpbb\datetime');
+
+		$lang_loader = new \phpbb\language\language_file_loader($phpbb_root_path, $phpEx);
+		$lang_loader->set_extension_manager($phpbb_extension_manager);
+		$lang = new \phpbb\language\language($lang_loader);
+		$this->user = new \phpbb\user($lang, '\phpbb\datetime');
 	}
 
 	/**
