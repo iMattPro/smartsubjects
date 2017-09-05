@@ -1,11 +1,10 @@
-# Opt into fully virtualized infrastructure
-sudo: required
-
 language: php
+sudo: required
+dist: precise
 
 matrix:
   include:
-    - php: 5.4
+    - php: 5.5
       env: DB=none;NOTESTS=1
     - php: 5.4
       env: DB=mysqli #myisam
