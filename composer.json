@@ -5,7 +5,7 @@
     "homepage": "https://github.com/VSEphpbb/smartsubjects",
     "version": "1.0.0-b3",
 	"keywords": ["phpbb", "extension", "subject", "edit", "smart"],
-    "license": "GPL-2.0",
+	"license": "GPL-2.0-only",
     "authors": [
         {
             "name": "Matt Friedman (VSE)",
