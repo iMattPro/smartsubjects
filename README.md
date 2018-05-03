@@ -29,4 +29,4 @@ With this extension, editing the subject of the first post in a topic will updat
 ## License
 [GNU General Public License v2](license.txt)
 
-© 2015 - Matt Friedman (VSE)
+© 2015 - Matt Friedman
