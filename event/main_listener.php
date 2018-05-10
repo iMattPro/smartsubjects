@@ -126,7 +126,7 @@ class main_listener implements EventSubscriberInterface
 			$sql = 'UPDATE ' . $this->posts_table . "
 				SET post_subject = '" . $this->db->sql_escape($new_subject) . "'
 				WHERE topic_id = " . (int) $event['topic_id'] .
-					((!$overwrite) ? " AND post_subject = '" . $this->db->sql_escape($old_subject) . "'" : ' AND post_id != ' . (int) $event['post_id']);
+					((!$overwrite) ? " AND post_subject = '" . $this->db->sql_escape($old_subject) . "'" : ' AND post_id <> ' . (int) $event['post_id']);
 			$this->db->sql_query($sql);
 
 			// Update the forum last post subject if applicable
