@@ -106,6 +106,6 @@ class setup_test extends listener_base
 		$this->assertSame($data['page_data'], $expected);
 
 		// Verify the lang file is loaded
-		$this->assertArrayHasKey('OVERWRITE_SUBJECTS', $this->user->lang);
+		$this->assertTrue($this->lang->is_set('OVERWRITE_SUBJECTS'));
 	}
 }

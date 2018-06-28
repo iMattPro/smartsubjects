@@ -18,6 +18,9 @@ class listener_base extends \phpbb_database_test_case
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var \phpbb\language\language */
+	protected $lang;
+
 	/** @var \vse\smartsubjects\event\main_listener */
 	protected $listener;
 
@@ -54,8 +57,8 @@ class listener_base extends \phpbb_database_test_case
 
 		$lang_loader = new \phpbb\language\language_file_loader($phpbb_root_path, $phpEx);
 		$lang_loader->set_extension_manager($phpbb_extension_manager);
-		$lang = new \phpbb\language\language($lang_loader);
-		$this->user = new \phpbb\user($lang, '\phpbb\datetime');
+		$this->lang = new \phpbb\language\language($lang_loader);
+		$this->user = new \phpbb\user($this->lang, '\phpbb\datetime');
 	}
 
 	/**
