@@ -89,7 +89,7 @@ class setup_test extends listener_base
 			array('m_', $fid, $mod_auth),
 		);
 
-		$this->auth->expects($this->any())
+		$this->auth->expects($this->atLeastOnce())
 			->method('acl_get')
 			->with($this->stringContains('_'), $this->anything())
 			->will($this->returnValueMap($acl_get_map));

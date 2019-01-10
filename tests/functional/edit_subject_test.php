@@ -15,7 +15,7 @@ namespace vse\smartsubjects\tests\functional;
  */
 class edit_subject_test extends \phpbb_functional_test_case
 {
-	static protected function setup_extensions()
+	protected static function setup_extensions()
 	{
 		return array('vse/smartsubjects');
 	}
@@ -95,6 +95,6 @@ class edit_subject_test extends \phpbb_functional_test_case
 			'post'			=> true,
 		), $additional_form_data);
 
-		return self::submit_post($posting_url, 'EDIT_POST', $form_data, $expected);
+		return $this->submit_post($posting_url, 'EDIT_POST', $form_data, $expected);
 	}
 }

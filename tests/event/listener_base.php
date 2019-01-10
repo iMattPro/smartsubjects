@@ -30,7 +30,7 @@ class listener_base extends \phpbb_database_test_case
 	/** @var \phpbb\user */
 	protected $user;
 
-	static protected function setup_extensions()
+	protected static function setup_extensions()
 	{
 		return array('vse/smartsubjects');
 	}

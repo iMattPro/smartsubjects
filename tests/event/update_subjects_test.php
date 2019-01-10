@@ -173,7 +173,7 @@ class update_subjects_test extends listener_base
 		$this->request->expects($this->any())
 			->method('is_set_post')
 			->with($this->equalTo('overwrite_subjects'))
-			->will($this->returnValue($overwrite));
+			->willReturn($overwrite);
 
 		// Define the event object
 		$event = new \phpbb\event\data($data);
