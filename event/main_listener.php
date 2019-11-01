@@ -62,7 +62,7 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * @inheritdoc
 	 */
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return array(
 			'core.permissions'						=> 'add_permission',
