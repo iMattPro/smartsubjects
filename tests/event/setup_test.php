@@ -92,7 +92,7 @@ class setup_test extends listener_base
 		$this->auth->expects($this->atLeastOnce())
 			->method('acl_get')
 			->with($this->stringContains('_'), $this->anything())
-			->will($this->returnValueMap($acl_get_map));
+			->willReturnMap($acl_get_map);
 
 		$data = new \phpbb\event\data(array(
 			'page_data'	=> $data,

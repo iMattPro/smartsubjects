@@ -167,7 +167,7 @@ class update_subjects_test extends listener_base
 		$this->auth->expects($this->any())
 			->method('acl_get')
 			->with($this->stringContains('_'), $this->anything())
-			->will($this->returnValueMap($permissions));
+			->willReturnMap($permissions);
 
 		// Set request variable
 		$this->request->expects($this->any())
@@ -222,7 +222,7 @@ class update_subjects_test extends listener_base
 		$this->auth->expects($this->any())
 			->method('acl_get')
 			->with($this->stringContains('f_smart_subjects'), $this->anything())
-			->will($this->returnValue(true));
+			->willReturn(true);
 
 		// Define the event object
 		$event = new \phpbb\event\data($data);
