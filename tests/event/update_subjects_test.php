@@ -164,14 +164,12 @@ class update_subjects_test extends listener_base
 	public function test_update_subjects($data, $permissions, $overwrite, $expected)
 	{
 		// Set permission variable
-		$this->auth->expects($this->any())
-			->method('acl_get')
+		$this->auth->method('acl_get')
 			->with($this->stringContains('_'), $this->anything())
 			->willReturnMap($permissions);
 
 		// Set request variable
-		$this->request->expects($this->any())
-			->method('is_set_post')
+		$this->request->method('is_set_post')
 			->with($this->equalTo('overwrite_subjects'))
 			->willReturn($overwrite);
 
@@ -219,8 +217,7 @@ class update_subjects_test extends listener_base
 	public function test_update_forum_subject($data, $expected)
 	{
 		// Set permission variable
-		$this->auth->expects($this->any())
-			->method('acl_get')
+		$this->auth->method('acl_get')
 			->with($this->stringContains('f_smart_subjects'), $this->anything())
 			->willReturn(true);
 
