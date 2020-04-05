@@ -14,7 +14,7 @@ With this extension, editing the subject of the first post in a topic will updat
 * PHP 5.3.3
 
 ## Install
-1. Download and unzip the [latest release](https://github.com/VSEphpbb/smartsubjects/releases) and copy it to the `ext` directory of your phpBB board.
+1. Download and unzip the [latest release](https://www.phpbb.com/customise/db/extension/smart_subjects/) and copy it to the `ext` directory of your phpBB board.
 2. Navigate in the ACP to `Customise -> Manage extensions`.
 3. Look for `Smart Subjects` under the Disabled Extensions list and click its `Enable` link.
 
