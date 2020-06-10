@@ -2,14 +2,14 @@
     "name": "vse/smartsubjects",
     "type": "phpbb-extension",
     "description": "When editing the subject of the first post in a topic, all subsequent posts with matching (Re:) subjects will also be updated to the new subject.",
-    "homepage": "https://github.com/VSEphpbb/smartsubjects",
+    "homepage": "https://github.com/iMattPro/smartsubjects",
     "version": "1.0.1-dev",
 	"keywords": ["phpbb", "extension", "subject", "edit", "smart"],
 	"license": "GPL-2.0-only",
     "authors": [
         {
             "name": "Matt Friedman",
-			"homepage": "http://vsephpbb.github.io",
+			"homepage": "https://imattpro.github.io",
             "role": "Developer"
         }
     ],
