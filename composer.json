@@ -21,11 +21,11 @@
         "display-name": "Smart Subjects",
         "soft-require": {
             "phpbb/phpbb": ">=3.1.0"
-		},
-		"version-check": {
-			"host": "vsephpbb.github.io",
-			"directory": "/version",
-			"filename": "smartsubjects.json"
-		}
+        },
+        "version-check": {
+            "host": "www.phpbb.com",
+            "directory": "/customise/db/extension/smart_subjects",
+            "filename": "version_check"
+        }
     }
 }
