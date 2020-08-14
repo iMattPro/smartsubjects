@@ -60,18 +60,18 @@ class edit_subject_test extends \phpbb_functional_test_case
 
 		// Check the results
 		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid={$this->sid}");
-		$this->assertContains('Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
-		$this->assertContains('Custom Foo Bar Subject', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Custom Foo Bar Subject', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
 
 		// Edit first post again, with overwrite mode
 		$this->edit_post(2, $post1['post_id'], 'Re-Edited Subject Test', 'This is an edited test post posted by the testing framework.', array('overwrite_subjects' => true));
 
 		// Check the results
 		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid={$this->sid}");
-		$this->assertContains('Re-Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re-Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
 	}
 
 	/**
