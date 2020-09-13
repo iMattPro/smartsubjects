@@ -43,7 +43,7 @@ class listener_base extends \phpbb_database_test_case
 	/**
 	 * Setup test environment
 	 */
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
 

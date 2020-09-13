@@ -20,7 +20,7 @@ class edit_subject_test extends \phpbb_functional_test_case
 		return array('vse/smartsubjects');
 	}
 
-	public function setUp(): void
+	protected function setUp(): void
 	{
 		parent::setUp();
 
