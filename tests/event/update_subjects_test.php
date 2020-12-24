@@ -165,12 +165,12 @@ class update_subjects_test extends listener_base
 	{
 		// Set permission variable
 		$this->auth->method('acl_get')
-			->with($this->stringContains('_'), $this->anything())
+			->with(self::stringContains('_'), self::anything())
 			->willReturnMap($permissions);
 
 		// Set request variable
 		$this->request->method('is_set_post')
-			->with($this->equalTo('overwrite_subjects'))
+			->with(self::equalTo('overwrite_subjects'))
 			->willReturn($overwrite);
 
 		// Define the event object
@@ -188,7 +188,7 @@ class update_subjects_test extends listener_base
 			WHERE topic_id = ' . (int) $data['topic_id'] . '
 				AND post_id <> ' . (int) $data['post_id'] . '
 			ORDER BY post_id');
-		$this->assertEquals($expected, $this->db->sql_fetchrowset($result));
+		self::assertEquals($expected, $this->db->sql_fetchrowset($result));
 		$this->db->sql_freeresult($result);
 	}
 
@@ -218,7 +218,7 @@ class update_subjects_test extends listener_base
 	{
 		// Set permission variable
 		$this->auth->method('acl_get')
-			->with($this->stringContains('f_smart_subjects'), $this->anything())
+			->with(self::stringContains('f_smart_subjects'), self::anything())
 			->willReturn(true);
 
 		// Define the event object
@@ -234,7 +234,7 @@ class update_subjects_test extends listener_base
 		$result = $this->db->sql_query('SELECT forum_last_post_subject
 			FROM phpbb_forums
 			WHERE forum_id = ' . (int) $data['forum_id']);
-		$this->assertEquals($expected, $this->db->sql_fetchfield('forum_last_post_subject'));
+		self::assertEquals($expected, $this->db->sql_fetchfield('forum_last_post_subject'));
 		$this->db->sql_freeresult($result);
 	}
 }

@@ -91,7 +91,7 @@ class setup_test extends listener_base
 
 		$this->auth->expects($this->atLeastOnce())
 			->method('acl_get')
-			->with($this->stringContains('_'), $this->anything())
+			->with(self::stringContains('_'), self::anything())
 			->willReturnMap($acl_get_map);
 
 		$data = new \phpbb\event\data(array(
@@ -103,9 +103,9 @@ class setup_test extends listener_base
 
 		$this->listener->setup($data);
 
-		$this->assertSame($data['page_data'], $expected);
+		self::assertSame($data['page_data'], $expected);
 
 		// Verify the lang file is loaded
-		$this->assertTrue($this->lang->is_set('OVERWRITE_SUBJECTS'));
+		self::assertTrue($this->lang->is_set('OVERWRITE_SUBJECTS'));
 	}
 }

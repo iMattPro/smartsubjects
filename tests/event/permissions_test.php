@@ -48,6 +48,6 @@ class permissions_test extends listener_base
 
 		$this->listener->add_permission($data);
 
-		$this->assertSame($data['permissions'], $expected);
+		self::assertSame($data['permissions'], $expected);
 	}
 }
