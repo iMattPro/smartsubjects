@@ -2,7 +2,8 @@
 
 With this extension, editing the subject of the first post in a topic will update all subsequent posts with matching (Re:) subjects to the new subject.
 
-[![Build Status](https://travis-ci.org/iMattPro/smartsubjects.svg)](https://travis-ci.org/iMattPro/smartsubjects)
+[![Build Status](https://github.com/iMattPro/smartsubjects/workflows/Tests/badge.svg)](https://github.com/iMattPro/smartsubjects/actions)
+[![codecov](https://codecov.io/gh/iMattPro/smartsubjects/branch/master/graph/badge.svg?token=CAF93B29MK)](https://codecov.io/gh/iMattPro/smartsubjects)
 
 ## Features
 * Renaming the first post's subject will update all __matching__ replies to the new title
