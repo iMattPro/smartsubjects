@@ -12,7 +12,7 @@ namespace vse\smartsubjects\tests\event;
 
 class listener_base extends \phpbb_database_test_case
 {
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\phpbb\auth\auth */
+	/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\auth\auth */
 	protected $auth;
 
 	/** @var \phpbb\db\driver\driver_interface */
@@ -24,7 +24,7 @@ class listener_base extends \phpbb_database_test_case
 	/** @var \vse\smartsubjects\event\main_listener */
 	protected $listener;
 
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\phpbb\request\request */
+	/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\request\request */
 	protected $request;
 
 	/** @var \phpbb\user */
