@@ -12,8 +12,8 @@ namespace vse\smartsubjects\event;
 
 use phpbb\auth\auth;
 use phpbb\db\driver\driver_interface;
+use phpbb\language\language;
 use phpbb\request\request;
-use phpbb\user;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -27,11 +27,11 @@ class main_listener implements EventSubscriberInterface
 	/* @var driver_interface */
 	protected $db;
 
+	/** @var language */
+	protected $language;
+
 	/** @var request */
 	protected $request;
-
-	/** @var user */
-	protected $user;
 
 	/** @var string */
 	protected $forums_table;
@@ -44,17 +44,17 @@ class main_listener implements EventSubscriberInterface
 	 *
 	 * @param auth             $auth         Permissions object
 	 * @param driver_interface $db           Database object
+	 * @param language         $language     Language object
 	 * @param request          $request      Request object
-	 * @param user             $user         User object
 	 * @param string           $forums_table Database forums table
 	 * @param string           $posts_table  Database posts table
 	 */
-	public function __construct(auth $auth, driver_interface $db, request $request, user $user, $forums_table, $posts_table)
+	public function __construct(auth $auth, driver_interface $db, language $language, request $request, $forums_table, $posts_table)
 	{
 		$this->auth = $auth;
 		$this->db = $db;
+		$this->language = $language;
 		$this->request = $request;
-		$this->user = $user;
 		$this->forums_table = $forums_table;
 		$this->posts_table = $posts_table;
 	}
@@ -64,11 +64,11 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public static function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.permissions'						=> 'add_permission',
 			'core.posting_modify_template_vars'		=> 'setup',
 			'core.posting_modify_submit_post_after' => 'update_subjects',
-		);
+		];
 	}
 
 	/**
@@ -80,7 +80,7 @@ class main_listener implements EventSubscriberInterface
 	public function add_permission($event)
 	{
 		$permissions = $event['permissions'];
-		$permissions['f_smart_subjects'] = array('lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post');
+		$permissions['f_smart_subjects'] = ['lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'];
 		$event['permissions'] = $permissions;
 	}
 
@@ -92,7 +92,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public function setup($event)
 	{
-		$this->user->add_lang_ext('vse/smartsubjects', 'smartsubjects');
+		$this->language->add_lang('smartsubjects', 'vse/smartsubjects');
 
 		$page_data = $event['page_data'];
 		$page_data['S_SMART_SUBJECTS_MOD'] = $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']);
@@ -108,7 +108,7 @@ class main_listener implements EventSubscriberInterface
 	public function update_subjects($event)
 	{
 		// Only proceed if editing the first post in a topic and smart subjects is allowed
-		if ($event['mode'] !== 'edit' || $event['data']['topic_first_post_id'] != $event['post_id'] || !$this->forum_auth($event['forum_id']))
+		if ($event['mode'] !== 'edit' || (int) $event['data']['topic_first_post_id'] !== (int) $event['post_id'] || !$this->forum_auth($event['forum_id']))
 		{
 			return;
 		}

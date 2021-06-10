@@ -11,8 +11,8 @@ With this extension, editing the subject of the first post in a topic will updat
 * Forum based permissions allow you to control which forums and users can use Smart Subjects
 
 ## Minimum Requirements
-* phpBB 3.1.0 or phpBB 3.2.0
-* PHP 5.3.3
+* phpBB 3.2.0 or newer
+* PHP 5.4 or newer
 
 ## Install
 1. Download and unzip the [latest release](https://www.phpbb.com/customise/db/extension/smart_subjects/) and copy it to the `ext` directory of your phpBB board.

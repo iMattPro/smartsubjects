@@ -27,12 +27,9 @@ class listener_base extends \phpbb_database_test_case
 	/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\request\request */
 	protected $request;
 
-	/** @var \phpbb\user */
-	protected $user;
-
 	protected static function setup_extensions()
 	{
-		return array('vse/smartsubjects');
+		return ['vse/smartsubjects'];
 	}
 
 	public function getDataSet()
@@ -62,7 +59,6 @@ class listener_base extends \phpbb_database_test_case
 		$lang_loader = new \phpbb\language\language_file_loader($phpbb_root_path, $phpEx);
 		$lang_loader->set_extension_manager($phpbb_extension_manager);
 		$this->lang = new \phpbb\language\language($lang_loader);
-		$this->user = new \phpbb\user($this->lang, '\phpbb\datetime');
 	}
 
 	/**
@@ -73,8 +69,8 @@ class listener_base extends \phpbb_database_test_case
 		$this->listener = new \vse\smartsubjects\event\main_listener(
 			$this->auth,
 			$this->db,
+			$this->lang,
 			$this->request,
-			$this->user,
 			'phpbb_forums',
 			'phpbb_posts'
 		);

@@ -20,10 +20,10 @@ class listener_test extends listener_base
 
 	public function test_getSubscribedEvents()
 	{
-		self::assertEquals(array(
+		self::assertEquals([
 			'core.permissions',
 			'core.posting_modify_template_vars',
 			'core.posting_modify_submit_post_after',
-		), array_keys(\vse\smartsubjects\event\main_listener::getSubscribedEvents()));
+		], array_keys(\vse\smartsubjects\event\main_listener::getSubscribedEvents()));
 	}
 }

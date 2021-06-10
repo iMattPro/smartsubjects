@@ -31,7 +31,7 @@ class permissions extends \phpbb\db\migration\migration
 	 */
 	public static function depends_on()
 	{
-		return array('\phpbb\db\migration\data\v310\gold');
+		return ['\phpbb\db\migration\data\v310\gold'];
 	}
 
 	/**
@@ -39,16 +39,16 @@ class permissions extends \phpbb\db\migration\migration
 	 */
 	public function update_data()
 	{
-		return array(
+		return [
 			// Add permission
-			array('permission.add', array('f_smart_subjects', false)),
+			['permission.add', ['f_smart_subjects', false]],
 
 			// Set permission roles
-			array('permission.permission_set', array('ROLE_FORUM_FULL', 'f_smart_subjects')),
-			array('permission.permission_set', array('ROLE_FORUM_LIMITED', 'f_smart_subjects')),
-			array('permission.permission_set', array('ROLE_FORUM_LIMITED_POLLS', 'f_smart_subjects')),
-			array('permission.permission_set', array('ROLE_FORUM_POLLS', 'f_smart_subjects')),
-			array('permission.permission_set', array('ROLE_FORUM_STANDARD', 'f_smart_subjects')),
-		);
+			['permission.permission_set', ['ROLE_FORUM_FULL', 'f_smart_subjects']],
+			['permission.permission_set', ['ROLE_FORUM_LIMITED', 'f_smart_subjects']],
+			['permission.permission_set', ['ROLE_FORUM_LIMITED_POLLS', 'f_smart_subjects']],
+			['permission.permission_set', ['ROLE_FORUM_POLLS', 'f_smart_subjects']],
+			['permission.permission_set', ['ROLE_FORUM_STANDARD', 'f_smart_subjects']],
+		];
 	}
 }
