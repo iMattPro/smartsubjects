@@ -9,37 +9,37 @@
 			<value>1</value>
 			<value>1</value>
 			<value>Test Topic 1</value>
-			<value></value>
+			<value/>
 		</row>
 		<row>
 			<value>2</value>
 			<value>1</value>
 			<value>Re: Test Topic 1</value>
-			<value></value>
+			<value/>
 		</row>
 		<row>
 			<value>3</value>
 			<value>1</value>
 			<value>Re: Test Topic 1</value>
-			<value></value>
+			<value/>
 		</row>
 		<row>
 			<value>4</value>
 			<value>2</value>
 			<value>Test Topic 2</value>
-			<value></value>
+			<value/>
 		</row>
 		<row>
 			<value>5</value>
 			<value>2</value>
 			<value>Re: Test Topic 2</value>
-			<value></value>
+			<value/>
 		</row>
 		<row>
 			<value>6</value>
 			<value>2</value>
 			<value>Custom Post Title</value>
-			<value></value>
+			<value/>
 		</row>
 	</table>
 	<table name="phpbb_forums">
@@ -53,9 +53,9 @@
 			<value>1</value>
 			<value>3</value>
 			<value>Re: Test Topic 1</value>
-			<value></value>
-			<value></value>
-			<value></value>
+			<value/>
+			<value/>
+			<value/>
 		</row>
 	</table>
 </dataset>
