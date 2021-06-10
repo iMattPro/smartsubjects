@@ -6,9 +6,9 @@ With this extension, editing the subject of the first post in a topic will updat
 [![codecov](https://codecov.io/gh/iMattPro/smartsubjects/branch/master/graph/badge.svg?token=CAF93B29MK)](https://codecov.io/gh/iMattPro/smartsubjects)
 
 ## Features
-* Renaming the first post's subject will update all __matching__ replies to the new title
-* Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject
-* Forum based permissions allow you to control which forums and users can use Smart Subjects
+* Changing the first post's subject (title) will update all __matching__ replies with the new subject (title).
+* Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject.
+* Forum based permissions allow you to control which forums and users can use Smart Subjects.
 
 ## Minimum Requirements
 * phpBB 3.2.0 or newer

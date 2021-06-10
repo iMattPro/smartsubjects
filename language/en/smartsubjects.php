@@ -34,5 +34,5 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, [
-	'OVERWRITE_SUBJECTS'	=> 'Overwrite all reply subjects',
+	'OVERWRITE_SUBJECTS'	=> 'Update all reply subjects',
 ]);
