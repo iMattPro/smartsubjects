@@ -79,9 +79,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	public function add_permission($event)
 	{
-		$permissions = $event['permissions'];
-		$permissions['f_smart_subjects'] = ['lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'];
-		$event['permissions'] = $permissions;
+		$event->update_subarray('permissions', 'f_smart_subjects', ['lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post']);
 	}
 
 	/**
@@ -94,9 +92,7 @@ class main_listener implements EventSubscriberInterface
 	{
 		$this->language->add_lang('smartsubjects', 'vse/smartsubjects');
 
-		$page_data = $event['page_data'];
-		$page_data['S_SMART_SUBJECTS_MOD'] = $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']);
-		$event['page_data'] = $page_data;
+		$event->update_subarray('page_data', 'S_SMART_SUBJECTS_MOD', $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']));
 	}
 
 	/**
