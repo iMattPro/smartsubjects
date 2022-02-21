@@ -14,23 +14,23 @@ class permissions_test extends listener_base
 {
 	public function add_permissions_test_data()
 	{
-		return array(
-			array(
-				array(),
-				array(
-					'f_smart_subjects' => array('lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'),
-				),
-			),
-			array(
-				array(
-					'a_foo' => array('lang' => 'ACL_A_FOO', 'cat' => 'misc'),
-				),
-				array(
-					'a_foo' => array('lang' => 'ACL_A_FOO', 'cat' => 'misc'),
-					'f_smart_subjects' => array('lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'),
-				),
-			),
-		);
+		return [
+			[
+				[],
+				[
+					'f_smart_subjects' => ['lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'],
+				],
+			],
+			[
+				[
+					'a_foo' => ['lang' => 'ACL_A_FOO', 'cat' => 'misc'],
+				],
+				[
+					'a_foo' => ['lang' => 'ACL_A_FOO', 'cat' => 'misc'],
+					'f_smart_subjects' => ['lang' => 'ACL_F_SMART_SUBJECTS', 'cat' => 'post'],
+				],
+			],
+		];
 	}
 
 	/**
@@ -40,14 +40,14 @@ class permissions_test extends listener_base
 	 */
 	public function test_add_permissions($data, $expected)
 	{
-		$data = new \phpbb\event\data(array(
+		$data = new \phpbb\event\data([
 			'permissions'	=> $data
-		));
+		]);
 
 		$this->set_listener();
 
 		$this->listener->add_permission($data);
 
-		$this->assertSame($data['permissions'], $expected);
+		self::assertSame($data['permissions'], $expected);
 	}
 }

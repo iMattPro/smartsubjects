@@ -2,19 +2,20 @@
 
 With this extension, editing the subject of the first post in a topic will update all subsequent posts with matching (Re:) subjects to the new subject.
 
-[![Build Status](https://travis-ci.org/iMattPro/smartsubjects.svg)](https://travis-ci.org/iMattPro/smartsubjects)
+[![Build Status](https://github.com/iMattPro/smartsubjects/workflows/Tests/badge.svg)](https://github.com/iMattPro/smartsubjects/actions)
+[![codecov](https://codecov.io/gh/iMattPro/smartsubjects/branch/master/graph/badge.svg?token=CAF93B29MK)](https://codecov.io/gh/iMattPro/smartsubjects)
 
 ## Features
-* Renaming the first post's subject will update all __matching__ replies to the new title
-* Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject
-* Forum based permissions allow you to control which forums and users can use Smart Subjects
+* Changing the first post's subject (title) will update all __matching__ replies with the new subject (title).
+* Admins and moderators have the option when editing a first post to update __all__ reply subjects (including non-matching subjects) to match the first post's subject.
+* Forum based permissions allow you to control which forums and users can use Smart Subjects.
 
 ## Minimum Requirements
-* phpBB 3.1.0 or phpBB 3.2.0
-* PHP 5.3.3
+* phpBB 3.2.0 or newer
+* PHP 5.4 or newer
 
 ## Install
-1. Download and unzip the [latest release](https://github.com/VSEphpbb/smartsubjects/releases) and copy it to the `ext` directory of your phpBB board.
+1. Download and unzip the [latest release](https://www.phpbb.com/customise/db/extension/smart_subjects/) and copy it to the `ext` directory of your phpBB board.
 2. Navigate in the ACP to `Customise -> Manage extensions`.
 3. Look for `Smart Subjects` under the Disabled Extensions list and click its `Enable` link.
 
@@ -29,4 +30,4 @@ With this extension, editing the subject of the first post in a topic will updat
 ## License
 [GNU General Public License v2](license.txt)
 
-© 2015 - Matt Friedman (VSE)
+© 2015 - Matt Friedman

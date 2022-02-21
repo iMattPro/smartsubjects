@@ -14,64 +14,64 @@ class setup_test extends listener_base
 {
 	public function setup_test_data()
 	{
-		return array(
-			array(
+		return [
+			[
 				2,
 				true,
 				true,
-				array(),
-				array('S_SMART_SUBJECTS_MOD' => true),
-			),
-			array(
+				[],
+				['S_SMART_SUBJECTS_MOD' => true],
+			],
+			[
 				2,
 				false,
 				false,
-				array(),
-				array('S_SMART_SUBJECTS_MOD' => false),
-			),
-			array(
+				[],
+				['S_SMART_SUBJECTS_MOD' => false],
+			],
+			[
 				2,
 				true,
 				false,
-				array(),
-				array('S_SMART_SUBJECTS_MOD' => false),
-			),
-			array(
+				[],
+				['S_SMART_SUBJECTS_MOD' => false],
+			],
+			[
 				2,
 				false,
 				true,
-				array(),
-				array('S_SMART_SUBJECTS_MOD' => false),
-			),
-			array(
+				[],
+				['S_SMART_SUBJECTS_MOD' => false],
+			],
+			[
 				3,
 				true,
 				true,
-				array('FOO_BAR' => 'foo bar'),
-				array('FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => true),
-			),
-			array(
+				['FOO_BAR' => 'foo bar'],
+				['FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => true],
+			],
+			[
 				3,
 				false,
 				false,
-				array('FOO_BAR' => 'foo bar'),
-				array('FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false),
-			),
-			array(
+				['FOO_BAR' => 'foo bar'],
+				['FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false],
+			],
+			[
 				3,
 				true,
 				false,
-				array('FOO_BAR' => 'foo bar'),
-				array('FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false),
-			),
-			array(
+				['FOO_BAR' => 'foo bar'],
+				['FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false],
+			],
+			[
 				3,
 				false,
 				true,
-				array('FOO_BAR' => 'foo bar'),
-				array('FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false),
-			),
-		);
+				['FOO_BAR' => 'foo bar'],
+				['FOO_BAR' => 'foo bar', 'S_SMART_SUBJECTS_MOD' => false],
+			],
+		];
 	}
 
 	/**
@@ -84,28 +84,28 @@ class setup_test extends listener_base
 	 */
 	public function test_setup($fid, $forum_auth, $mod_auth, $data, $expected)
 	{
-		$acl_get_map = array(
-			array('f_smart_subjects', $fid, $forum_auth),
-			array('m_', $fid, $mod_auth),
-		);
+		$acl_get_map = [
+			['f_smart_subjects', $fid, $forum_auth],
+			['m_', $fid, $mod_auth],
+		];
 
-		$this->auth->expects($this->any())
+		$this->auth->expects(self::atLeastOnce())
 			->method('acl_get')
-			->with($this->stringContains('_'), $this->anything())
-			->will($this->returnValueMap($acl_get_map));
+			->with(self::stringContains('_'), self::anything())
+			->willReturnMap($acl_get_map);
 
-		$data = new \phpbb\event\data(array(
+		$data = new \phpbb\event\data([
 			'page_data'	=> $data,
 			'forum_id'	=> $fid,
-		));
+		]);
 
 		$this->set_listener();
 
 		$this->listener->setup($data);
 
-		$this->assertSame($data['page_data'], $expected);
+		self::assertSame($data['page_data'], $expected);
 
 		// Verify the lang file is loaded
-		$this->assertArrayHasKey('OVERWRITE_SUBJECTS', $this->user->lang);
+		self::assertTrue($this->lang->is_set('OVERWRITE_SUBJECTS'));
 	}
 }

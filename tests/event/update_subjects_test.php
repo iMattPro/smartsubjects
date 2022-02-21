@@ -19,39 +19,39 @@ class update_subjects_test extends listener_base
 	 */
 	protected function import_topic_data()
 	{
-		return array(
-			1 => array(
+		return [
+			1 => [
 				'mode' 				=> 'edit',
 				'update_subject'	=> true,
 				'post_id'			=> 1,
 				'topic_id'			=> 1,
 				'forum_id'			=> 1,
-				'data'				=> array(
+				'data'				=> [
 					'topic_title'			=> 'Test Topic 1',
 					'topic_first_post_id'	=> 1,
 					'topic_last_post_id'	=> 3,
-				),
-				'post_data' 		=> array(
+				],
+				'post_data' 		=> [
 					'post_subject'	=> 'New Topic Title 1',
-				),
-			),
+				],
+			],
 
-			2 => array(
+			2 => [
 				'mode' 				=> 'edit',
 				'update_subject'	=> true,
 				'post_id'			=> 4,
 				'topic_id'			=> 2,
 				'forum_id'			=> 1,
-				'data'				=> array(
+				'data'				=> [
 					'topic_title'			=> 'Test Topic 2',
 					'topic_first_post_id'	=> 4,
 					'topic_last_post_id'	=> 6,
-				),
-				'post_data' 		=> array(
+				],
+				'post_data' 		=> [
 					'post_subject'	=> 'New Topic Title 2',
-				),
-			),
-		);
+				],
+			],
+		];
 	}
 
 	/**
@@ -63,93 +63,93 @@ class update_subjects_test extends listener_base
 	{
 		$data = $this->import_topic_data();
 
-		return array(
-			array(
+		return [
+			[
 				// standard title update
 				$data[1],
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				false,
-				array(
-					array('post_id' => 2, 'post_subject' => 'Re: New Topic Title 1'),
-					array('post_id' => 3, 'post_subject' => 'Re: New Topic Title 1'),
-				),
-			),
-			array(
+				[
+					['post_id' => 2, 'post_subject' => 'Re: New Topic Title 1'],
+					['post_id' => 3, 'post_subject' => 'Re: New Topic Title 1'],
+				],
+			],
+			[
 				// standard title update
 				$data[2],
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				false,
-				array(
-					array('post_id' => 5, 'post_subject' => 'Re: New Topic Title 2'),
-					array('post_id' => 6, 'post_subject' => 'Custom Post Title'),
-				),
-			),
-			array(
+				[
+					['post_id' => 5, 'post_subject' => 'Re: New Topic Title 2'],
+					['post_id' => 6, 'post_subject' => 'Custom Post Title'],
+				],
+			],
+			[
 				// update with overwrite mode on
 				$data[2],
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				true,
-				array(
-					array('post_id' => 5, 'post_subject' => 'Re: New Topic Title 2'),
-					array('post_id' => 6, 'post_subject' => 'Re: New Topic Title 2'),
-				),
-			),
-			array(
+				[
+					['post_id' => 5, 'post_subject' => 'Re: New Topic Title 2'],
+					['post_id' => 6, 'post_subject' => 'Re: New Topic Title 2'],
+				],
+			],
+			[
 				// not editing a post
-				array_merge($data[1], array('mode' => 'post')),
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				array_merge($data[1], ['mode' => 'post']),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				false,
-				array(
-					array('post_id' => 2, 'post_subject' => 'Re: Test Topic 1'),
-					array('post_id' => 3, 'post_subject' => 'Re: Test Topic 1'),
-				),
-			),
-			array(
+				[
+					['post_id' => 2, 'post_subject' => 'Re: Test Topic 1'],
+					['post_id' => 3, 'post_subject' => 'Re: Test Topic 1'],
+				],
+			],
+			[
 				// not updating a title
-				array_merge($data[1], array('update_subject' => false)),
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				array_merge($data[1], ['update_subject' => false]),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				false,
-				array(
-					array('post_id' => 2, 'post_subject' => 'Re: Test Topic 1'),
-					array('post_id' => 3, 'post_subject' => 'Re: Test Topic 1'),
-				),
-			),
-			array(
+				[
+					['post_id' => 2, 'post_subject' => 'Re: Test Topic 1'],
+					['post_id' => 3, 'post_subject' => 'Re: Test Topic 1'],
+				],
+			],
+			[
 				// not editing the first post post
-				array_merge($data[1], array('post_id' => 2)),
-				array(
-					array('f_smart_subjects', 1, true),
-				),
+				array_merge($data[1], ['post_id' => 2]),
+				[
+					['f_smart_subjects', 1, true],
+				],
 				false,
-				array(
-					array('post_id' => 1, 'post_subject' => 'Test Topic 1'),
-					array('post_id' => 3, 'post_subject' => 'Re: Test Topic 1'),
-				),
-			),
-			array(
+				[
+					['post_id' => 1, 'post_subject' => 'Test Topic 1'],
+					['post_id' => 3, 'post_subject' => 'Re: Test Topic 1'],
+				],
+			],
+			[
 				// unauthorized forum
 				$data[1],
-				array(
-					array('f_smart_subjects', 2, false),
-				),
+				[
+					['f_smart_subjects', 2, false],
+				],
 				false,
-				array(
-					array('post_id' => 2, 'post_subject' => 'Re: Test Topic 1'),
-					array('post_id' => 3, 'post_subject' => 'Re: Test Topic 1'),
-				),
-			),
+				[
+					['post_id' => 2, 'post_subject' => 'Re: Test Topic 1'],
+					['post_id' => 3, 'post_subject' => 'Re: Test Topic 1'],
+				],
+			],
 
-		);
+		];
 	}
 
 	/**
@@ -164,16 +164,14 @@ class update_subjects_test extends listener_base
 	public function test_update_subjects($data, $permissions, $overwrite, $expected)
 	{
 		// Set permission variable
-		$this->auth->expects($this->any())
-			->method('acl_get')
-			->with($this->stringContains('_'), $this->anything())
-			->will($this->returnValueMap($permissions));
+		$this->auth->method('acl_get')
+			->with(self::stringContains('_'), self::anything())
+			->willReturnMap($permissions);
 
 		// Set request variable
-		$this->request->expects($this->any())
-			->method('is_set_post')
-			->with($this->equalTo('overwrite_subjects'))
-			->will($this->returnValue($overwrite));
+		$this->request->method('is_set_post')
+			->with(self::equalTo('overwrite_subjects'))
+			->willReturn($overwrite);
 
 		// Define the event object
 		$event = new \phpbb\event\data($data);
@@ -188,9 +186,9 @@ class update_subjects_test extends listener_base
 		$result = $this->db->sql_query('SELECT post_id, post_subject
 			FROM phpbb_posts
 			WHERE topic_id = ' . (int) $data['topic_id'] . '
-			AND post_id != ' . (int) $data['post_id'] . '
+				AND post_id <> ' . (int) $data['post_id'] . '
 			ORDER BY post_id');
-		$this->assertEquals($expected, $this->db->sql_fetchrowset($result));
+		self::assertEquals($expected, $this->db->sql_fetchrowset($result));
 		$this->db->sql_freeresult($result);
 	}
 
@@ -203,10 +201,10 @@ class update_subjects_test extends listener_base
 	{
 		$data = $this->import_topic_data();
 
-		return array(
-			array($data[1], 'Re: New Topic Title 1'), // forum subject is updated
-			array($data[2], 'Re: Test Topic 1'), // forum subject is not updated
-		);
+		return [
+			[$data[1], 'Re: New Topic Title 1'], // forum subject is updated
+			[$data[2], 'Re: Test Topic 1'], // forum subject is not updated
+		];
 	}
 
 	/**
@@ -219,10 +217,9 @@ class update_subjects_test extends listener_base
 	public function test_update_forum_subject($data, $expected)
 	{
 		// Set permission variable
-		$this->auth->expects($this->any())
-			->method('acl_get')
-			->with($this->stringContains('f_smart_subjects'), $this->anything())
-			->will($this->returnValue(true));
+		$this->auth->method('acl_get')
+			->with(self::stringContains('f_smart_subjects'), self::anything())
+			->willReturn(true);
 
 		// Define the event object
 		$event = new \phpbb\event\data($data);
@@ -237,7 +234,7 @@ class update_subjects_test extends listener_base
 		$result = $this->db->sql_query('SELECT forum_last_post_subject
 			FROM phpbb_forums
 			WHERE forum_id = ' . (int) $data['forum_id']);
-		$this->assertEquals($expected, $this->db->sql_fetchfield('forum_last_post_subject'));
+		self::assertEquals($expected, $this->db->sql_fetchfield('forum_last_post_subject'));
 		$this->db->sql_freeresult($result);
 	}
 }

@@ -15,12 +15,12 @@ namespace vse\smartsubjects\tests\functional;
  */
 class edit_subject_test extends \phpbb_functional_test_case
 {
-	static protected function setup_extensions()
+	protected static function setup_extensions()
 	{
-		return array('vse/smartsubjects');
+		return ['vse/smartsubjects'];
 	}
 
-	public function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -30,7 +30,7 @@ class edit_subject_test extends \phpbb_functional_test_case
 	public function test_edit_options_admin()
 	{
 		$this->login();
-		$crawler = self::request('GET', "posting.php?mode=edit&f=2&p=1&sid={$this->sid}");
+		$crawler = self::request('GET', "posting.php?mode=edit&f=2&p=1&sid=$this->sid");
 		$this->assertContainsLang('OVERWRITE_SUBJECTS', $crawler->filter('html')->text());
 	}
 
@@ -38,7 +38,7 @@ class edit_subject_test extends \phpbb_functional_test_case
 	{
 		$this->create_user('anothertestuser');
 		$this->login('anothertestuser');
-		$crawler = self::request('GET', "posting.php?mode=edit&f=2&p=1&sid={$this->sid}");
+		$crawler = self::request('GET', "posting.php?mode=edit&f=2&p=1&sid=$this->sid");
 		$this->assertNotContainsLang('OVERWRITE_SUBJECTS', $crawler->filter('html')->text());
 	}
 
@@ -59,19 +59,19 @@ class edit_subject_test extends \phpbb_functional_test_case
 		$this->edit_post(2, $post1['post_id'], 'Edited Subject Test', 'This is an edited test post posted by the testing framework.');
 
 		// Check the results
-		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid={$this->sid}");
-		$this->assertContains('Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
-		$this->assertContains('Custom Foo Bar Subject', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
+		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid=$this->sid");
+		self::assertStringContainsString('Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Custom Foo Bar Subject', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
 
 		// Edit first post again, with overwrite mode
-		$this->edit_post(2, $post1['post_id'], 'Re-Edited Subject Test', 'This is an edited test post posted by the testing framework.', array('overwrite_subjects' => true));
+		$this->edit_post(2, $post1['post_id'], 'Re-Edited Subject Test', 'This is an edited test post posted by the testing framework.', ['overwrite_subjects' => true]);
 
 		// Check the results
-		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid={$this->sid}");
-		$this->assertContains('Re-Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
-		$this->assertContains('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
+		$crawler = self::request('GET', "viewtopic.php?p={$post1['post_id']}&sid=$this->sid");
+		self::assertStringContainsString('Re-Edited Subject Test', $crawler->filter("#post_content{$post1['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post2['post_id']} > h3 > a")->text());
+		self::assertStringContainsString('Re: Re-Edited Subject Test', $crawler->filter("#post_content{$post3['post_id']} > h3 > a")->text());
 	}
 
 	/**
@@ -85,16 +85,16 @@ class edit_subject_test extends \phpbb_functional_test_case
 	 * @param string $expected Lang var of expected message after posting
 	 * @return array|null post_id, topic_id if message is empty
 	 */
-	protected function edit_post($forum_id, $post_id, $subject, $message, array $additional_form_data = array(), $expected = '')
+	protected function edit_post($forum_id, $post_id, $subject, $message, array $additional_form_data = [], $expected = '')
 	{
-		$posting_url = "posting.php?mode=edit&f={$forum_id}&p={$post_id}&sid={$this->sid}";
+		$posting_url = "posting.php?mode=edit&f=$forum_id&p=$post_id&sid=$this->sid";
 
-		$form_data = array_merge(array(
+		$form_data = array_merge([
 			'subject'		=> $subject,
 			'message'		=> $message,
 			'post'			=> true,
-		), $additional_form_data);
+		], $additional_form_data);
 
-		return self::submit_post($posting_url, 'EDIT_POST', $form_data, $expected);
+		return $this->submit_post($posting_url, 'EDIT_POST', $form_data, $expected);
 	}
 }

@@ -4,8 +4,8 @@ services:
         arguments:
             - '@auth'
             - '@dbal.conn'
+            - '@language'
             - '@request'
-            - '@user'
             - '%tables.forums%'
             - '%tables.posts%'
         tags:

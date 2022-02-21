@@ -12,24 +12,24 @@ namespace vse\smartsubjects\tests\event;
 
 class listener_base extends \phpbb_database_test_case
 {
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\phpbb\auth\auth */
+	/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\auth\auth */
 	protected $auth;
 
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var \phpbb\language\language */
+	protected $lang;
+
 	/** @var \vse\smartsubjects\event\main_listener */
 	protected $listener;
 
-	/** @var \PHPUnit_Framework_MockObject_MockObject|\phpbb\request\request */
+	/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\request\request */
 	protected $request;
 
-	/** @var \phpbb\user */
-	protected $user;
-
-	static protected function setup_extensions()
+	protected static function setup_extensions()
 	{
-		return array('vse/smartsubjects');
+		return ['vse/smartsubjects'];
 	}
 
 	public function getDataSet()
@@ -40,7 +40,7 @@ class listener_base extends \phpbb_database_test_case
 	/**
 	 * Setup test environment
 	 */
-	public function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
@@ -49,13 +49,16 @@ class listener_base extends \phpbb_database_test_case
 		$phpbb_extension_manager = new \phpbb_mock_extension_manager($phpbb_root_path);
 
 		$this->db = $this->new_dbal();
-		$this->auth = $this->getMock('\phpbb\auth\auth');
-		$this->request = $this->getMock('\phpbb\request\request');
+		$this->auth = $this->getMockBuilder('\phpbb\auth\auth')
+			->disableOriginalConstructor()
+			->getMock();
+		$this->request = $this->getMockBuilder('\phpbb\request\request')
+			->disableOriginalConstructor()
+			->getMock();
 
 		$lang_loader = new \phpbb\language\language_file_loader($phpbb_root_path, $phpEx);
 		$lang_loader->set_extension_manager($phpbb_extension_manager);
-		$lang = new \phpbb\language\language($lang_loader);
-		$this->user = new \phpbb\user($lang, '\phpbb\datetime');
+		$this->lang = new \phpbb\language\language($lang_loader);
 	}
 
 	/**
@@ -66,8 +69,8 @@ class listener_base extends \phpbb_database_test_case
 		$this->listener = new \vse\smartsubjects\event\main_listener(
 			$this->auth,
 			$this->db,
+			$this->lang,
 			$this->request,
-			$this->user,
 			'phpbb_forums',
 			'phpbb_posts'
 		);
