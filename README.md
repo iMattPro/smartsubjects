@@ -4,6 +4,7 @@ With this extension, editing the subject of the first post in a topic will updat
 
 [![Build Status](https://github.com/iMattPro/smartsubjects/workflows/Tests/badge.svg)](https://github.com/iMattPro/smartsubjects/actions)
 [![codecov](https://codecov.io/gh/iMattPro/smartsubjects/branch/master/graph/badge.svg?token=CAF93B29MK)](https://codecov.io/gh/iMattPro/smartsubjects)
+[![Latest Stable Version](https://poser.pugx.org/vse/smartsubjects/v/stable)](https://www.phpbb.com/customise/db/extension/smart_subjects/)
 
 ## Features
 * Changing the first post's subject (title) will update all __matching__ replies with the new subject (title).
