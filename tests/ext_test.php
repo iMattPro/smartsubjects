@@ -14,20 +14,14 @@ class ext_test extends \phpbb_test_case
 {
 	public function test_ext()
 	{
-		/** @var \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\DependencyInjection\ContainerInterface */
-		$container = $this->getMockBuilder('\Symfony\Component\DependencyInjection\ContainerInterface')
-			->disableOriginalConstructor()
-			->getMock();
+		/** @var $container \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\DependencyInjection\ContainerInterface */
+		$container = $this->createMock('\Symfony\Component\DependencyInjection\ContainerInterface');
 
-		/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\finder */
-		$extension_finder = $this->getMockBuilder('\phpbb\finder')
-			->disableOriginalConstructor()
-			->getMock();
+		/** @var $extension_finder \PHPUnit\Framework\MockObject\MockObject|\phpbb\finder */
+		$extension_finder = $this->createMock('\phpbb\finder');
 
-		/** @var \PHPUnit\Framework\MockObject\MockObject|\phpbb\db\migrator */
-		$migrator = $this->getMockBuilder('\phpbb\db\migrator')
-			->disableOriginalConstructor()
-			->getMock();
+		/** @var $migrator \PHPUnit\Framework\MockObject\MockObject|\phpbb\db\migrator */
+		$migrator = $this->createMock('\phpbb\db\migrator');
 
 		$ext = new \vse\smartsubjects\ext(
 			$container,

@@ -49,12 +49,8 @@ class listener_base extends \phpbb_database_test_case
 		$phpbb_extension_manager = new \phpbb_mock_extension_manager($phpbb_root_path);
 
 		$this->db = $this->new_dbal();
-		$this->auth = $this->getMockBuilder('\phpbb\auth\auth')
-			->disableOriginalConstructor()
-			->getMock();
-		$this->request = $this->getMockBuilder('\phpbb\request\request')
-			->disableOriginalConstructor()
-			->getMock();
+		$this->auth = $this->createMock('\phpbb\auth\auth');
+		$this->request = $this->createMock('\phpbb\request\request');
 
 		$lang_loader = new \phpbb\language\language_file_loader($phpbb_root_path, $phpEx);
 		$lang_loader->set_extension_manager($phpbb_extension_manager);
