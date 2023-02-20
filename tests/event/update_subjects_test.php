@@ -125,7 +125,7 @@ class update_subjects_test extends listener_base
 				],
 			],
 			[
-				// not editing the first post post
+				// not editing the first post
 				array_merge($data[1], ['post_id' => 2]),
 				[
 					['f_smart_subjects', 1, true],
