@@ -17,8 +17,8 @@ class ext_test extends \phpbb_test_case
 		/** @var $container \PHPUnit\Framework\MockObject\MockObject|\Symfony\Component\DependencyInjection\ContainerInterface */
 		$container = $this->createMock('\Symfony\Component\DependencyInjection\ContainerInterface');
 
-		/** @var $extension_finder \PHPUnit\Framework\MockObject\MockObject|\phpbb\finder */
-		$extension_finder = $this->createMock('\phpbb\finder');
+		/** @var $extension_finder \PHPUnit\Framework\MockObject\MockObject|\phpbb\finder\finder */
+		$extension_finder = $this->createMock('\phpbb\finder\finder');
 
 		/** @var $migrator \PHPUnit\Framework\MockObject\MockObject|\phpbb\db\migrator */
 		$migrator = $this->createMock('\phpbb\db\migrator');
