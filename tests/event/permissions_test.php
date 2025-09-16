@@ -12,7 +12,7 @@ namespace vse\smartsubjects\tests\event;
 
 class permissions_test extends listener_base
 {
-	public function add_permissions_test_data()
+	public static function add_permissions_test_data()
 	{
 		return [
 			[

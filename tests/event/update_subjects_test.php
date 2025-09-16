@@ -17,7 +17,7 @@ class update_subjects_test extends listener_base
 	 *
 	 * @return array
 	 */
-	protected function import_topic_data()
+	protected static function import_topic_data()
 	{
 		return [
 			1 => [
@@ -59,9 +59,9 @@ class update_subjects_test extends listener_base
 	 *
 	 * @return array
 	 */
-	public function update_subjects_test_data()
+	public static function update_subjects_test_data()
 	{
-		$data = $this->import_topic_data();
+		$data = self::import_topic_data();
 
 		return [
 			[
@@ -197,9 +197,9 @@ class update_subjects_test extends listener_base
 	 *
 	 * @return array
 	 */
-	public function update_forum_subject_test_data()
+	public static function update_forum_subject_test_data()
 	{
-		$data = $this->import_topic_data();
+		$data = self::import_topic_data();
 
 		return [
 			[$data[1], 'Re: New Topic Title 1'], // forum subject is updated

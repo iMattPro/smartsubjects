@@ -12,7 +12,7 @@ namespace vse\smartsubjects\tests\event;
 
 class setup_test extends listener_base
 {
-	public function setup_test_data()
+	public static function setup_test_data()
 	{
 		return [
 			[
