@@ -92,7 +92,10 @@ class main_listener implements EventSubscriberInterface
 	{
 		$this->language->add_lang('smartsubjects', 'vse/smartsubjects');
 
-		$event->update_subarray('page_data', 'S_SMART_SUBJECTS_MOD', $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']));
+		$smart_subject_allowed = $this->forum_auth($event['forum_id']) && $this->auth->acl_get('m_', $event['forum_id']);
+
+		$event->update_subarray('page_data', 'S_SMART_SUBJECTS_MOD', $smart_subject_allowed);
+		$event->update_subarray('page_data', 'S_SMART_SUBJECTS_CHECKED', $smart_subject_allowed && $this->request->is_set_post('overwrite_subjects'));
 	}
 
 	/**
