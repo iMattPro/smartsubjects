@@ -24,7 +24,7 @@ class main_listener implements EventSubscriberInterface
 	/** @var auth */
 	protected $auth;
 
-	/* @var driver_interface */
+	/** @var driver_interface */
 	protected $db;
 
 	/** @var language */
