@@ -2,10 +2,11 @@
 /**
  *
  * Smart Subjects
+ * French translation by Galixte (http://www.galixte.com)
  *
  * @copyright (c) 2015 Matt Friedman
  * @license GNU General Public License, version 2 (GPL-2.0)
- * @Italian Language By alex75 https://www.phpbb-store.it
+ *
  */
 
 /**
@@ -34,5 +35,5 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, [
-	'ACL_F_SMART_SUBJECTS'	=> 'Può usare Smart Subjects',
+	'OVERWRITE_SUBJECTS'	=> 'Renommer tous les sujets des réponses',
 ]);
